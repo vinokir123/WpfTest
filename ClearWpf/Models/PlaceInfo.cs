@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace ClearWpf.Models
 {
-    internal class PlaceInfo
+    public class PlaceInfo
     {
         public string Name { get; set; }
 

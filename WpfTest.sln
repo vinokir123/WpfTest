@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClearWpf", "ClearWpf\ClearWpf.csproj", "{854D54D9-8665-4F23-A349-2F1206AF1018}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{DBD2E4D5-DF0F-4AC6-B650-B1E8A8081DED}"
+	ProjectSection(ProjectDependencies) = postProject
+		{854D54D9-8665-4F23-A349-2F1206AF1018} = {854D54D9-8665-4F23-A349-2F1206AF1018}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -2,7 +2,7 @@
 
 namespace ClearWpf.Models
 {
-    internal struct ConfirmedCount
+    public struct ConfirmedCount
     {
         public DateTime Date { get; set; }
 

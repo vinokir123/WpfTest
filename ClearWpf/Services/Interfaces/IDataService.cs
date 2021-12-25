@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ClearWpf.Services.Interfaces
 {
-    internal interface IDataService
+    public interface IDataService
     {
         IEnumerable<CountryInfo> GetData();
     }

@@ -4,7 +4,7 @@ using System.Windows;
 
 namespace ClearWpf.Models
 {
-    internal class CountryInfo : PlaceInfo
+    public class CountryInfo : PlaceInfo
     {
         private Point? _Location;
 
