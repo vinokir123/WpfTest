@@ -207,7 +207,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\ConfirmedCount.cs" />
+    <Compile Include="Models\CountryInfo.cs" />
+    <Compile Include="Models\DataPoint.cs" />
+    <Compile Include="Models\PlaceInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Services\Interfaces\IDataService.cs" />
     <Compile Include="Services\Registrator.cs" />
     <Compile Include="ViewModels\Base\TittledViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
@@ -249,7 +254,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Infrastructure\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
