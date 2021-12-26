@@ -1,10 +1,11 @@
 ﻿using ClearWpf.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ClearWpf.Services.Interfaces
 {
     public interface IDataService
     {
-        IEnumerable<CountryInfo> GetData();
+        Task<IEnumerable<CountryInfo>> GetDataAsync();
     }
 }

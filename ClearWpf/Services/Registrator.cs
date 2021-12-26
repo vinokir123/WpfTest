@@ -7,6 +7,7 @@ namespace ClearWpf.Services
     {
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
+            services.AddSingleton<ICovidDataParser, CovidDataParser>();
             services.AddSingleton<IDataService, DataService>();
             return services;
         }

@@ -210,10 +210,13 @@
     </Compile>
     <Compile Include="Models\ConfirmedCount.cs" />
     <Compile Include="Models\CountryInfo.cs" />
+    <Compile Include="Models\CountryInfoRow.cs" />
     <Compile Include="Models\DataPoint.cs" />
     <Compile Include="Models\PlaceInfo.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Services\CovidDataParser.cs" />
     <Compile Include="Services\DataService.cs" />
+    <Compile Include="Services\Interfaces\ICovidDataParser.cs" />
     <Compile Include="Services\Interfaces\IDataService.cs" />
     <Compile Include="Services\Registrator.cs" />
     <Compile Include="ViewModels\Base\TittledViewModel.cs" />
