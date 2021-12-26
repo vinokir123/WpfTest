@@ -125,6 +125,9 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
@@ -256,6 +259,7 @@
     <Compile Include="Infrastructure\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Infrastructure\Converters\Converter.cs" />
     <Compile Include="Infrastructure\Converters\LocationPointToStr.cs" />
+    <Compile Include="Infrastructure\Converters\PointToMapLocation.cs" />
     <Compile Include="Models\ConfirmedCount.cs" />
     <Compile Include="Models\CountryInfo.cs" />
     <Compile Include="Models\CountryInfoRow.cs" />
