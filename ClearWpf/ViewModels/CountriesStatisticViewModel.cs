@@ -37,7 +37,21 @@ namespace ClearWpf.ViewModels
         private CountryInfo _SelectedCountry;
 
         /// <summary>Выбранная страна</summary>
-        public CountryInfo SelectedCountry { get => _SelectedCountry; set => Set(ref _SelectedCountry, value); }
+        public CountryInfo SelectedCountry
+        {
+            get => _SelectedCountry; set
+            {
+                Set(ref _SelectedCountry, value);
+                OnPropertyChanged(nameof(SelectedCountryCounts));
+            }
+        }
+
+        #endregion
+
+        #region SelectedCountryCounts : int - Количество случаев
+
+        /// <summary>Количество случаев</summary>
+        public IEnumerable<ConfirmedCount> SelectedCountryCounts { get => SelectedCountry?.Counts ?? Enumerable.Empty<ConfirmedCount>(); }
 
         #endregion
         #region IsDataLoading : IsDataLoading - отметка о загрузке данных
@@ -62,28 +76,28 @@ namespace ClearWpf.ViewModels
         }
 
         #endregion
-        /// <summary>Отладочный конструктор, используемый в процессе разработки в визуальном дизайнере</summary>
-        public CountriesStatisticViewModel() : this(null)
-        {
-            if (!App.IsDesignMode)
-                throw new InvalidOperationException("Вызов конструктора, не предназначенного для использования в обычном режиме");
+        ///// <summary>Отладочный конструктор, используемый в процессе разработки в визуальном дизайнере</summary>
+        //public CountriesStatisticViewModel() : this(null)
+        //{
+        //    if (!App.IsDesignMode)
+        //        throw new InvalidOperationException("Вызов конструктора, не предназначенного для использования в обычном режиме");
 
-            _Countries = Enumerable.Range(1, 10)
-               .Select(i => new CountryInfo
-               {
-                   Name = $"Country {i}",
-                   Provinces = Enumerable.Range(1, 10).Select(j => new PlaceInfo
-                   {
-                       Name = $"Province {i}",
-                       Location = new Point(i, j),
-                       Counts = Enumerable.Range(1, 10).Select(k => new ConfirmedCount
-                       {
-                           Date = DateTime.Now.Subtract(TimeSpan.FromDays(100 - k)),
-                           Count = k
-                       }).ToArray()
-                   }).ToArray()
-               }).ToArray();
-        }
+        //    _Countries = Enumerable.Range(1, 10)
+        //       .Select(i => new CountryInfo
+        //       {
+        //           Name = $"Country {i}",
+        //           Provinces = Enumerable.Range(1, 10).Select(j => new PlaceInfo
+        //           {
+        //               Name = $"Province {i}",
+        //               Location = new Point(i, j),
+        //               Counts = Enumerable.Range(1, 10).Select(k => new ConfirmedCount
+        //               {
+        //                   Date = DateTime.Now.Subtract(TimeSpan.FromDays(100 - k)),
+        //                   Count = k
+        //               }).ToArray()
+        //           }).ToArray()
+        //       }).ToArray();
+        //}
         public CountriesStatisticViewModel(IDataService DataService)
         {
             _DataService = DataService;
