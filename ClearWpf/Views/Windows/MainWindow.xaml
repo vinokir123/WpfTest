@@ -3,10 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:ClearWpf"
+        xmlns:local="clr-namespace:ClearWpf" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:view="clr-namespace:ClearWpf.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding VmTitle}" 
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
+        Width="800" Height="450">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding CountriesStatistic.RefreshDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <Grid>
-        
+        <view:CountriesStatisticView DataContext="{Binding CountriesStatistic}"/>
     </Grid>
 </Window>

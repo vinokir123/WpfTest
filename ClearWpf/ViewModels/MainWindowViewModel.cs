@@ -4,9 +4,17 @@ namespace ClearWpf.ViewModels
 {
     public class MainWindowViewModel : TittledViewModel
     {
+        public CountriesStatisticViewModel CountriesStatistic { get; }
+
         public MainWindowViewModel()
         {
-            Tittle = "Главное окно";
+            
+            VmTitle = "Главное окно";
+        }
+        public MainWindowViewModel(CountriesStatisticViewModel statistic) : this()
+        {
+            this.CountriesStatistic = statistic;
+            CountriesStatistic.MainModel = this;
         }
     }
 }

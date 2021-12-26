@@ -41,6 +41,12 @@
     <StartupObject>ClearWpf.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome5, Version=2.1.6.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.6\lib\net472\FontAwesome5.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome5.Net, Version=2.1.6.0, Culture=neutral, PublicKeyToken=9cfaf01297a008f8, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome5.2.1.6\lib\net472\FontAwesome5.Net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -118,6 +124,9 @@
     </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -200,6 +209,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Views\CountriesStatisticView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -208,6 +221,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infrastructure\Commands\BaseCommand.cs" />
+    <Compile Include="Infrastructure\Commands\BaseCommandAsync.cs" />
+    <Compile Include="Infrastructure\Commands\Base\Command.cs" />
+    <Compile Include="Infrastructure\Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Infrastructure\Converters\Converter.cs" />
+    <Compile Include="Infrastructure\Converters\LocationPointToStr.cs" />
     <Compile Include="Models\ConfirmedCount.cs" />
     <Compile Include="Models\CountryInfo.cs" />
     <Compile Include="Models\CountryInfoRow.cs" />
@@ -221,9 +240,13 @@
     <Compile Include="Services\Registrator.cs" />
     <Compile Include="ViewModels\Base\TittledViewModel.cs" />
     <Compile Include="ViewModels\Base\ViewModel.cs" />
+    <Compile Include="ViewModels\CountriesStatisticViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\Registrator.cs" />
     <Compile Include="ViewModels\ViewModelLocator.cs" />
+    <Compile Include="Views\CountriesStatisticView.xaml.cs">
+      <DependentUpon>CountriesStatisticView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -257,9 +280,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

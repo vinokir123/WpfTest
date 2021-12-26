@@ -5,10 +5,10 @@
         #region Tittle : string - Заголовок
 
         /// <summary>Заголовок</summary>
-        private string _Tittle;
+        private string _Title;
 
         /// <summary>Заголовок</summary>
-        public string Tittle { get => _Tittle; set => Set(ref _Tittle, value); }
+        public string VmTitle { get => _Title; set => Set(ref _Title, value); }
 
         #endregion
     }

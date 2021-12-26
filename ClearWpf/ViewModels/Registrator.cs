@@ -7,6 +7,7 @@ namespace ClearWpf.ViewModels
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
             services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<CountriesStatisticViewModel>();
             return services;
         }
     }
