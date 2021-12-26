@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:ClearWpf" 
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:view="clr-namespace:ClearWpf.Views"
         mc:Ignorable="d"
+        Icon="../../Resources/virus_red.ico"
+        Style="{StaticResource MainWindowStyle}"
         Title="{Binding VmTitle}" 
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Width="800" Height="450">

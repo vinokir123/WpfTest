@@ -29,7 +29,6 @@ namespace ClearWpf.Services
 
             var response = await client.GetAsync(
                 __DataSourceAddress);
-            //await Task.Delay(5000);
             return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
         }
 

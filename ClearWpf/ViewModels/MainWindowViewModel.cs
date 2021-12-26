@@ -8,8 +8,8 @@ namespace ClearWpf.ViewModels
 
         public MainWindowViewModel()
         {
-            
-            VmTitle = "Главное окно";
+
+            VmTitle = "Заболеваемость COVID-19";
         }
         public MainWindowViewModel(CountriesStatisticViewModel statistic) : this()
         {
