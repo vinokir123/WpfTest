@@ -1,6 +1,9 @@
-﻿using ClearWpf.Models;
+﻿using ClearWpf;
+using ClearWpf.Models;
 using ClearWpf.Services;
 using ClearWpf.Services.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -19,7 +22,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            _iCovidDataParser = new CovidDataParser();
+            _iCovidDataParser = new CovidDataParser(App.Host.Services.GetRequiredService<ILogger<CovidDataParser>>());
         }
 
         [Test]

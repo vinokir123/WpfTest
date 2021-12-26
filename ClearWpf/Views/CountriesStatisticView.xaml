@@ -38,9 +38,6 @@
                 </ListBox>
             </DockPanel>
         </GroupBox>
-        <Grid  Margin="20" Grid.Column="1">
-            <fa:ImageAwesome Icon="Solid_Spinner" Spin="True" Height="48" Width="48" Visibility="{Binding IsDataLoading, Converter={StaticResource BooleanToVisibilityConverter }}"/>
-        </Grid>
         <GroupBox Grid.Column="1" Header="Информация">
             <Grid>
 
@@ -61,6 +58,9 @@
               
             </Grid>
         </GroupBox>
+        <Grid  Margin="20" Grid.Column="1">
+            <fa:ImageAwesome Icon="Solid_Spinner" Spin="True" Height="48" Width="48" Visibility="{Binding IsDataLoading, Converter={StaticResource BooleanToVisibilityConverter }}" Panel.ZIndex="10"/>
+        </Grid>
 
     </Grid>
 </UserControl>

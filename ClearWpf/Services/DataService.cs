@@ -1,5 +1,6 @@
 ﻿using ClearWpf.Models;
 using ClearWpf.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,10 +16,12 @@ namespace ClearWpf.Services
         private const string __DataSourceAddress = @"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv";
 
         public ICovidDataParser Parser { get; }
+        public ILogger<DataService> Logger { get; }
 
-        public DataService(ICovidDataParser parser)
+        public DataService(ICovidDataParser parser, ILogger<DataService> logger)
         {
             Parser = parser;
+            Logger = logger;
         }
         private async Task<Stream> GetDataStream()
         {
@@ -32,21 +35,29 @@ namespace ClearWpf.Services
 
         private async Task<IEnumerable<string>> GetDataLinesAsync()
         {
-            using (var data_stream = await GetDataStream())
+            try
             {
-                using (var data_reader = new StreamReader(data_stream))
+                using (var data_stream = await GetDataStream())
                 {
-                    List<string> results = new List<string>();
-                    while (!data_reader.EndOfStream)
+                    using (var data_reader = new StreamReader(data_stream))
                     {
-                        var line = data_reader.ReadLine();
-                        if (string.IsNullOrWhiteSpace(line)) continue;
+                        List<string> results = new List<string>();
+                        while (!data_reader.EndOfStream)
+                        {
+                            var line = data_reader.ReadLine();
+                            if (string.IsNullOrWhiteSpace(line)) continue;
 
-                        results.Add(Parser.ReplacedRow(line));
+                            results.Add(Parser.ReplacedRow(line));
+                        }
+                        return results;
                     }
-                    return results;
                 }
             }
+            catch (Exception e)
+            {
+                Logger.LogError("Load data error!", e);
+            }
+            return Enumerable.Empty<string>();
         }
         private async Task<DateTime[]> GetDates() => Parser.GetDatesMas(await GetDataLinesAsync());
 

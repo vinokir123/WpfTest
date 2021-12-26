@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace Tests
 {
@@ -21,7 +22,7 @@ namespace Tests
         [SetUp]
         public void SetUp()
         {
-            _dataService = new DataService(App.Host.Services.GetRequiredService<ICovidDataParser>()) ;
+            _dataService = new DataService(App.Host.Services.GetRequiredService<ICovidDataParser>(), App.Host.Services.GetRequiredService<ILogger<DataService>>()) ;
         }
 
         [Test]

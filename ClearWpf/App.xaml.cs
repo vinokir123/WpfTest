@@ -6,6 +6,10 @@ using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
+using Serilog;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
+using Microsoft.Extensions.Logging.Debug;
 
 namespace ClearWpf
 {
@@ -23,7 +27,16 @@ namespace ClearWpf
             get
             {
                 if (__Host == null)
-                    __Host = Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+                    __Host = Program.CreateHostBuilder(Environment.GetCommandLineArgs())
+                            .ConfigureLogging(logging =>
+                            {
+                                logging.AddFilter("System", LogLevel.Debug);
+                                logging.AddFilter<DebugLoggerProvider>("Microsoft", LogLevel.Information);
+                                logging.AddFilter<ConsoleLoggerProvider>("Microsoft", LogLevel.Trace);
+                                logging.AddFile("Logs/log-{Date}.txt");
+
+                            })
+                            .Build();
                 return __Host;
             }
         }
